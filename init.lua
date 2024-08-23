@@ -882,8 +882,13 @@ require('lazy').setup({
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
-    config = function()
-      require('nvim-tree').setup {}
+    opts = {
+      update_focused_file = {
+        enable = true,
+      },
+    },
+    config = function(_, opts)
+      require('nvim-tree').setup(opts)
     end,
   },
 
@@ -932,7 +937,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = '' },
+  -- { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
