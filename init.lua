@@ -600,7 +600,21 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {
-          directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
+          directoryFilters = {
+            '-.git',
+            '-.vscode',
+            '-.idea',
+            '-.vscode-test',
+            '-node_modules',
+
+            '-bazel-bin',
+            '-bazel-gocode',
+            '-bazel-out',
+            '-bazel-testlogs',
+            '-vendor/github.com/containernetworking/plugins/pkg/ns',
+            '-vendor/github.com/bsm/go-sparkey',
+            '-puppet-config',
+          },
         },
         -- pyright = {},
         -- rust_analyzer = {},
@@ -963,12 +977,6 @@ require('lazy').setup({
       -- log_level = 'debug',
     },
   },
-
-  -- Codeium AI integration
-  -- {
-  --   'Exafunction/codeium.vim',
-  --   event = 'BufEnter',
-  -- },
 
   -- Copilot AI integration
   {
