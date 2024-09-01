@@ -965,16 +965,9 @@ require('lazy').setup({
   },
 
   -- Codeium AI integration
-  -- {
-  --   'Exafunction/codeium.vim',
-  --   event = 'BufEnter',
-  -- },
-
-  -- Copilot AI integration
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    opts = {},
+    'Exafunction/codeium.vim',
+    event = 'BufEnter',
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
