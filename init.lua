@@ -222,7 +222,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     -- argument after params if you find that you have to write the file
     -- twice for changes to be saved.
     -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-    local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params)
+    local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, 5000)
     for cid, res in pairs(result or {}) do
       for _, r in pairs(res.result or {}) do
         if r.edit then
