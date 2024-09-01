@@ -193,6 +193,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Start/toggle nvim-tree
 vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree', noremap = true, silent = true })
 
+-- Source buffer-enhancement.vim which allows marking buffers with numbers and jumping back to them.
+-- <leader>m1, <leader>m2, etc. will remember buffer numbers and <leader>1, <leader>2, etc. will jump back to them.
+vim.cmd('source ' .. vim.fn.stdpath 'config' .. '/vim/buffer-enhancement.vim')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
