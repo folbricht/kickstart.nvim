@@ -732,22 +732,6 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-
-      -- Copilot
-      {
-        'zbirenbaum/copilot-cmp',
-        dependencies = 'copilot.lua',
-        opts = {},
-        config = function(_, opts)
-          local copilot_cmp = require 'copilot_cmp'
-          copilot_cmp.setup(opts)
-          -- attach cmp source whenever copilot attaches
-          -- fixes lazy-loading issues with the copilot cmp source
-          vim.lsp.on_attach(function(_)
-            copilot_cmp._on_insert_enter {}
-          end, 'copilot')
-        end,
-      },
     },
     config = function()
       -- See `:help cmp`
@@ -824,7 +808,6 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
-          { name = 'copilot', group_index = 1, priority = 100 },
         },
       }
     end,
@@ -982,10 +965,10 @@ require('lazy').setup({
   },
 
   -- Codeium AI integration
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
-  },
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter',
+  -- },
 
   -- Copilot AI integration
   {
