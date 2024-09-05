@@ -193,9 +193,22 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Start/toggle nvim-tree
 vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { desc = '[F]ile [T]ree', noremap = true, silent = true })
 
--- Source buffer-enhancement.vim which allows marking buffers with numbers and jumping back to them.
--- <leader>m1, <leader>m2, etc. will remember buffer numbers and <leader>1, <leader>2, etc. will jump back to them.
-vim.cmd('source ' .. vim.fn.stdpath 'config' .. '/vim/buffer-enhancement.vim')
+-- Setup bindings for buffer navigation
+vim.keymap.set('n', '<leader>1', ':lua require("bufferline").go_to(1, true)<cr>', { desc = 'Switch to buffer 1', silent = true })
+vim.keymap.set('n', '<leader>2', ':lua require("bufferline").go_to(2, true)<cr>', { desc = 'Switch to buffer 2', silent = true })
+vim.keymap.set('n', '<leader>3', ':lua require("bufferline").go_to(3, true)<cr>', { desc = 'Switch to buffer 3', silent = true })
+vim.keymap.set('n', '<leader>4', ':lua require("bufferline").go_to(4, true)<cr>', { desc = 'Switch to buffer 4', silent = true })
+vim.keymap.set('n', '<leader>5', ':lua require("bufferline").go_to(5, true)<cr>', { desc = 'Switch to buffer 5', silent = true })
+vim.keymap.set('n', '<leader>6', ':lua require("bufferline").go_to(6, true)<cr>', { desc = 'Switch to buffer 6', silent = true })
+vim.keymap.set('n', '<leader>7', ':lua require("bufferline").go_to(7, true)<cr>', { desc = 'Switch to buffer 7', silent = true })
+vim.keymap.set('n', '<leader>8', ':lua require("bufferline").go_to(8, true)<cr>', { desc = 'Switch to buffer 8', silent = true })
+vim.keymap.set('n', '<leader>9', ':lua require("bufferline").go_to(9, true)<cr>', { desc = 'Switch to buffer 9', silent = true })
+vim.keymap.set('n', '<C-.>', ':BufferLineCycleNext<CR>', { desc = 'Navigate to next buffer', silent = true })
+vim.keymap.set('n', '<C-,>', ':BufferLineCyclePrev<CR>', { desc = 'Navigate to previous buffer', silent = true })
+vim.keymap.set('n', '<C-0>', ':BufferLineMoveNext<CR>', { desc = 'Move buffer to the right', silent = true })
+vim.keymap.set('n', '<C-9>', ':BufferLineMovePrev<CR>', { desc = 'Move buffer to the left', silent = true })
+vim.keymap.set('n', '<C-Home>', ':BufferLineTogglePin<CR>', { desc = 'Toggle buffer pinning', silent = true })
+vim.keymap.set('n', '<C-End>', ':BufferLinePickClose<CR>', { desc = 'Close selected buffer', silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -945,6 +958,7 @@ require('lazy').setup({
     },
     opts = {
       options = {
+        numbers = 'ordinal',
         -- Makes the buffers move the right when nvim-tree is opened
         offsets = {
           {
