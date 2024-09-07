@@ -190,6 +190,12 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Move in insert mode
+vim.keymap.set('i', '<C-h>', '<Left>', { desc = 'Move left in insert Mode' })
+vim.keymap.set('i', '<C-l>', '<Right>', { desc = 'Move right in insert Mode' })
+vim.keymap.set('i', '<C-j>', '<Down>', { desc = 'Move down in insert Mode' })
+vim.keymap.set('i', '<C-k>', '<Up>', { desc = 'Move up in insert Mode' })
+
 -- Start/toggle nvim-tree
 vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { desc = '[F]ile [T]ree', noremap = true, silent = true })
 
@@ -816,16 +822,16 @@ require('lazy').setup({
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { 'i', 's' }),
+          -- ['<C-l>'] = cmp.mapping(function()
+          --   if luasnip.expand_or_locally_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   end
+          -- end, { 'i', 's' }),
+          -- ['<C-h>'] = cmp.mapping(function()
+          --   if luasnip.locally_jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   end
+          -- end, { 'i', 's' }),
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -1081,6 +1087,7 @@ require('lazy').setup({
               [']l'] = { query = '@loop.outer', desc = 'Next loop start' },
               [']s'] = { query = '@scope', query_group = 'locals', desc = 'Next scope' },
               [']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
+              [']p'] = { query = '@parameter.inner', desc = 'Next parameter start' },
             },
             goto_next_end = {
               [']F'] = { query = '@call.outer', desc = 'Next function call end' },
@@ -1088,6 +1095,7 @@ require('lazy').setup({
               [']C'] = { query = '@class.outer', desc = 'Next class end' },
               [']I'] = { query = '@conditional.outer', desc = 'Next conditional end' },
               [']L'] = { query = '@loop.outer', desc = 'Next loop end' },
+              [']P'] = { query = '@parameter.inner', desc = 'Next parameter' },
             },
             goto_previous_start = {
               ['[f'] = { query = '@call.outer', desc = 'Prev function call start' },
@@ -1095,6 +1103,7 @@ require('lazy').setup({
               ['[c'] = { query = '@class.outer', desc = 'Prev class start' },
               ['[i'] = { query = '@conditional.outer', desc = 'Prev conditional start' },
               ['[l'] = { query = '@loop.outer', desc = 'Prev loop start' },
+              ['[o'] = { query = '@parameter.inner', desc = 'Prev parameter start' },
             },
             goto_previous_end = {
               ['[F'] = { query = '@call.outer', desc = 'Prev function call end' },
@@ -1102,6 +1111,7 @@ require('lazy').setup({
               ['[C'] = { query = '@class.outer', desc = 'Prev class end' },
               ['[I'] = { query = '@conditional.outer', desc = 'Prev conditional end' },
               ['[L'] = { query = '@loop.outer', desc = 'Prev loop end' },
+              ['[O'] = { query = '@parameter.inner', desc = 'Prev parameter end' },
             },
           },
         },
