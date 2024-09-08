@@ -400,11 +400,12 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          path_display = { 'smart' },
+          -- mappings = {
+          -- i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          -- },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -969,6 +970,7 @@ require('lazy').setup({
     opts = {
       options = {
         numbers = 'ordinal',
+        separator_style = 'slant',
         -- Makes the buffers move the right when nvim-tree is opened
         offsets = {
           {
@@ -1022,6 +1024,12 @@ require('lazy').setup({
         return vim.fn['codeium#Clear']()
       end, { expr = true, silent = true })
     end,
+  },
+
+  -- Pretty renames in file explorer
+  {
+    'stevearc/dressing.nvim',
+    event = 'VeryLazy',
   },
 
   -- Text objects
