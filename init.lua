@@ -213,8 +213,10 @@ vim.keymap.set('n', '<C-.>', ':BufferLineCycleNext<CR>', { desc = 'Navigate to n
 vim.keymap.set('n', '<C-,>', ':BufferLineCyclePrev<CR>', { desc = 'Navigate to previous buffer', silent = true })
 vim.keymap.set('n', '<C-0>', ':BufferLineMoveNext<CR>', { desc = 'Move buffer to the right', silent = true })
 vim.keymap.set('n', '<C-9>', ':BufferLineMovePrev<CR>', { desc = 'Move buffer to the left', silent = true })
-vim.keymap.set('n', '<C-Home>', ':BufferLineTogglePin<CR>', { desc = 'Toggle buffer pinning', silent = true })
-vim.keymap.set('n', '<C-End>', ':BufferLinePickClose<CR>', { desc = 'Close selected buffer', silent = true })
+vim.keymap.set('n', '<leader>tp', ':BufferLineTogglePin<CR>', { desc = 'Toggle buffer pinning', silent = true })
+vim.keymap.set('n', '<leader>tc', ':bdelete<CR>', { desc = 'Close selected buffer', silent = true })
+vim.keymap.set('n', '<leader>tr', ':BufferLineCloseRight<CR>', { desc = 'Close buffers to the right', silent = true })
+vim.keymap.set('n', '<leader>tl', ':BufferLineCloseLeft<CR>', { desc = 'Close buffers to the left', silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -334,7 +336,8 @@ require('lazy').setup({
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
+        { '<leader>t', group = '[T]abs' },
+        { '<leader>f', group = '[F]ile' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       }
     end,
@@ -596,11 +599,11 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
-          end
+          -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          --   map('<leader>th', function()
+          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+          --   end, '[T]oggle Inlay [H]ints')
+          -- end
         end,
       })
 
