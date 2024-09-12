@@ -1067,9 +1067,6 @@ require('lazy').setup({
 
               ['am'] = { query = '@function.outer', desc = 'Select outer part of a method/function definition' },
               ['im'] = { query = '@function.inner', desc = 'Select inner part of a method/function definition' },
-
-              ['ac'] = { query = '@class.outer', desc = 'Select outer part of a class' },
-              ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class' },
             },
           },
           move = {
@@ -1083,7 +1080,7 @@ require('lazy').setup({
               [']l'] = { query = '@loop.outer', desc = 'Next loop start' },
               [']s'] = { query = '@scope', query_group = 'locals', desc = 'Next scope' },
               [']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
-              [']p'] = { query = '@parameter.inner', desc = 'Next parameter start' },
+              [']a'] = { query = '@parameter.inner', desc = 'Next parameter start' },
             },
             goto_next_end = {
               [']F'] = { query = '@call.outer', desc = 'Next function call end' },
@@ -1091,7 +1088,7 @@ require('lazy').setup({
               [']C'] = { query = '@class.outer', desc = 'Next class end' },
               [']I'] = { query = '@conditional.outer', desc = 'Next conditional end' },
               [']L'] = { query = '@loop.outer', desc = 'Next loop end' },
-              [']P'] = { query = '@parameter.inner', desc = 'Next parameter' },
+              [']A'] = { query = '@parameter.inner', desc = 'Next parameter' },
             },
             goto_previous_start = {
               ['[f'] = { query = '@call.outer', desc = 'Prev function call start' },
@@ -1099,7 +1096,7 @@ require('lazy').setup({
               ['[c'] = { query = '@class.outer', desc = 'Prev class start' },
               ['[i'] = { query = '@conditional.outer', desc = 'Prev conditional start' },
               ['[l'] = { query = '@loop.outer', desc = 'Prev loop start' },
-              ['[o'] = { query = '@parameter.inner', desc = 'Prev parameter start' },
+              ['[a'] = { query = '@parameter.inner', desc = 'Prev parameter start' },
             },
             goto_previous_end = {
               ['[F'] = { query = '@call.outer', desc = 'Prev function call end' },
@@ -1107,7 +1104,7 @@ require('lazy').setup({
               ['[C'] = { query = '@class.outer', desc = 'Prev class end' },
               ['[I'] = { query = '@conditional.outer', desc = 'Prev conditional end' },
               ['[L'] = { query = '@loop.outer', desc = 'Prev loop end' },
-              ['[O'] = { query = '@parameter.inner', desc = 'Prev parameter end' },
+              ['[A'] = { query = '@parameter.inner', desc = 'Prev parameter end' },
             },
           },
         },
