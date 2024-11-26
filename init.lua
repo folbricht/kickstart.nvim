@@ -966,6 +966,14 @@ require('lazy').setup({
       update_focused_file = {
         enable = true,
       },
+      filesystem_watchers = {
+        ignore_dirs = {
+          'vendor',
+        },
+      },
+      git = {
+        enable = false,
+      },
     },
     config = function(_, opts)
       require('nvim-tree').setup(opts)
@@ -1041,6 +1049,29 @@ require('lazy').setup({
   {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
+  },
+
+  -- Github links
+  {
+    'ruifm/gitlinker.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      callbacks = {
+        ['git.corp.stripe.com'] = function(url_data)
+          local url = 'https://' .. url_data.host .. '/' .. url_data.repo .. '/blob/' .. url_data.rev .. '/' .. url_data.file
+          if url_data.lstart then
+            url = url .. '#L' .. url_data.lstart
+            if url_data.lend then
+              url = url .. '-L' .. url_data.lend
+            end
+          end
+          return url
+        end,
+      },
+    },
+    config = function(_, opts)
+      require('gitlinker').setup(opts)
+    end,
   },
 
   -- Text objects
