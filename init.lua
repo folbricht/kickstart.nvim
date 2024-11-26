@@ -757,6 +757,12 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      {
+        'Exafunction/codeium.nvim',
+        enabled = true,
+        build = ':Codeium Auth',
+        opts = {},
+      },
     },
     config = function()
       -- See `:help cmp`
@@ -1002,26 +1008,6 @@ require('lazy').setup({
       auto_restore_lazy_delay_enabled = true,
       -- log_level = 'debug',
     },
-  },
-
-  -- Codeium AI integration
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
-    config = function()
-      vim.keymap.set('i', '<C-y>', function()
-        return vim.fn['codeium#Accept']()
-      end, { expr = true, silent = true })
-      vim.keymap.set('i', '<c-n>', function()
-        return vim.fn['codeium#CycleCompletions'](1)
-      end, { expr = true, silent = true })
-      vim.keymap.set('i', '<c-p>', function()
-        return vim.fn['codeium#CycleCompletions'](-1)
-      end, { expr = true, silent = true })
-      vim.keymap.set('i', '<c-x>', function()
-        return vim.fn['codeium#Clear']()
-      end, { expr = true, silent = true })
-    end,
   },
 
   -- Pretty renames in file explorer
