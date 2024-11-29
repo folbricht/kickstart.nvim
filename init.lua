@@ -967,6 +967,7 @@ require('lazy').setup({
         enable = true,
       },
       filesystem_watchers = {
+        enable = false,
         ignore_dirs = {
           'vendor',
         },
