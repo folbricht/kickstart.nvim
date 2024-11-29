@@ -216,7 +216,7 @@ vim.keymap.set('n', '<C-n>', ':BufferLineCyclePrev<CR>', { desc = 'Navigate to p
 vim.keymap.set('n', '<A-e>', ':BufferLineMoveNext<CR>', { desc = 'Move buffer to the right', silent = true })
 vim.keymap.set('n', '<A-n>', ':BufferLineMovePrev<CR>', { desc = 'Move buffer to the left', silent = true })
 vim.keymap.set('n', '<leader>tp', ':BufferLineTogglePin<CR>', { desc = 'Toggle buffer pinning', silent = true })
-vim.keymap.set('n', '<leader>tc', ':bdelete<CR>', { desc = 'Close selected buffer', silent = true })
+vim.keymap.set('n', '<leader>tc', ':bp|bd#<CR>', { desc = 'Close selected buffer', silent = true })
 vim.keymap.set('n', '<leader>tr', ':BufferLineCloseRight<CR>', { desc = 'Close buffers to the right', silent = true })
 vim.keymap.set('n', '<leader>tl', ':BufferLineCloseLeft<CR>', { desc = 'Close buffers to the left', silent = true })
 
