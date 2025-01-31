@@ -220,6 +220,12 @@ vim.keymap.set('n', '<leader>tc', ':bp|bd#<CR>', { desc = 'Close selected buffer
 vim.keymap.set('n', '<leader>tr', ':BufferLineCloseRight<CR>', { desc = 'Close buffers to the right', silent = true })
 vim.keymap.set('n', '<leader>tl', ':BufferLineCloseLeft<CR>', { desc = 'Close buffers to the left', silent = true })
 
+vim.filetype.add {
+  extension = {
+    sky = 'starlark',
+  },
+}
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -918,7 +924,7 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go', 'starlark' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
