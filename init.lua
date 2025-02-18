@@ -958,8 +958,6 @@ require('lazy').setup({
       update_focused_file = {
         enable = true,
       },
-<<<<<<< Updated upstream
-=======
       filesystem_watchers = {
         enable = false,
         ignore_dirs = {
@@ -997,7 +995,6 @@ require('lazy').setup({
         -- custom mappings
         vim.keymap.set('n', 'G', grep_at_node, opts 'Grep at node')
       end,
->>>>>>> Stashed changes
     },
     config = function(_, opts)
       require('nvim-tree').setup(opts)
