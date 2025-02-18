@@ -1007,6 +1007,10 @@ require('lazy').setup({
 
         -- custom mappings
         vim.keymap.set('n', 'G', grep_at_node, opts 'Grep at node')
+
+        -- Disable default mappings for <C-e> and <C-n> to prevent switching tabs in nvim-tree buffer by accident
+        pcall(vim.keymap.del, 'n', '<C-e>', { buffer = 0 })
+        pcall(vim.keymap.del, 'n', '<C-n>', { buffer = 0 })
       end,
     },
     config = function(_, opts)
