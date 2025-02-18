@@ -981,6 +981,33 @@ require('lazy').setup({
       git = {
         enable = false,
       },
+      -- Custom on_attach function to add additional keybindings to add functionality to Livegrep under the current node
+      -- with the `G` keybinding.
+      on_attach = function(bufnr)
+        local api = require 'nvim-tree.api'
+
+        local grep_at_node = function()
+          local node = api.tree.get_node_under_cursor()
+          local path = node.absolute_path
+          if node.type ~= 'directory' and node.parent then
+            path = node.parent.absolute_path
+          end
+          require('telescope.builtin').live_grep {
+            search_dirs = { path },
+            prompt_title = string.format('Grep in [%s]', vim.fs.basename(path)),
+          }
+        end
+
+        local function opts(desc)
+          return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        end
+
+        -- default mappings
+        api.config.mappings.default_on_attach(bufnr)
+
+        -- custom mappings
+        vim.keymap.set('n', 'G', grep_at_node, opts 'Grep at node')
+      end,
     },
     config = function(_, opts)
       require('nvim-tree').setup(opts)
