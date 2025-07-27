@@ -1078,6 +1078,7 @@ require('lazy').setup({
         require('copilot').setup {
           suggestion = { enabled = false },
           panel = { enabled = false },
+          copilot_node_command = os.getenv 'HOME' .. '/.nodenv/versions/23.11.0/bin/node', -- Node.js version must be > 20
         }
       end,
     },
