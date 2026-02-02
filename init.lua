@@ -463,6 +463,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[File] [N]eovim config' })
+
+      -- Shortcut for gocode configs
+      vim.keymap.set('n', '<leader>fc', function()
+        builtin.find_files { cwd = 'service_configs' }
+      end, { desc = '[File] Service [C]onfigs' })
     end,
   },
 
@@ -1078,7 +1083,7 @@ require('lazy').setup({
         require('copilot').setup {
           suggestion = { enabled = false },
           panel = { enabled = false },
-          copilot_node_command = os.getenv 'HOME' .. '/.nodenv/versions/23.11.0/bin/node', -- Node.js version must be > 20
+          copilot_node_command = os.getenv 'HOME' .. '/.nodenv/versions/24.9.0/bin/node', -- Node.js version must be > 20
         }
       end,
     },
